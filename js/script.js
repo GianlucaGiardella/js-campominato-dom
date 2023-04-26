@@ -3,16 +3,25 @@ const easy = 100;
 const medium = 81;
 const hard = 49;
 const bombsNum = 16;
+const main = document.querySelector("main");
 const grid = document.querySelector(".grid");
+let score = 0;
+const result = document.createElement("div");
+result.classList.add("result");
 
 // functions
 function play() {
     const mode = document.querySelector("#mode").value.toLowerCase();
     const cellNum = difficulty(mode);
     const bombsArr = [];
+
+    //reset
     grid.innerHTML = "";
-    generate(cellNum, grid);
-    bombGenerator(bombsNum, 1, cellNum, bombsArr)
+    result.innerHTML = "";
+
+    //generator
+    bombGenerator(bombsNum, 1, cellNum, bombsArr);
+    cellGenerator(cellNum, main, grid, bombsArr, score, result);
     console.log(bombsArr);
 }
 
@@ -22,7 +31,7 @@ function difficulty(diff) {
             : hard;
 }
 
-function generate(cells, grid) {
+function cellGenerator(cells, main, grid, bombs, score, result) {
     for (let i = 1; i <= cells; i++) {
         const newCell = document.createElement("div");
         newCell.classList.add("cell");
@@ -33,7 +42,17 @@ function generate(cells, grid) {
 
         newCell.addEventListener('click', function () {
             this.classList.toggle('active');
-            console.log(`Hai premuto la cella ${this.innerHTML}`);
+            if (bombs.includes(i)) {
+                result.innerHTML = `Hai perso! Punteggio: ${score}`;
+                main.appendChild(result);
+                score = 0
+            } else {
+                score++;
+                if (score === (cells - bombsNum)) {
+                    result.innerHTML = `Hai vinto! Punteggio: ${score}`;
+                    main.appendChild(result);
+                }
+            }
         });
     }
 }
