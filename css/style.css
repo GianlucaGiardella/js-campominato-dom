@@ -6,7 +6,7 @@
 
 :root {
     --container-width: 1200px;
-    --grid-width: 600px;
+    --grid-width: 500px;
 }
 
 body {
@@ -30,7 +30,7 @@ footer {
     align-items: center;
 }
 
-header, 
+header,
 footer {
     background-color: white;
 }
@@ -52,6 +52,7 @@ h1 {
 label,
 #mode,
 button,
+.result,
 footer {
     font-size: 1.5rem;
 }
@@ -69,11 +70,12 @@ button {
 main {
     flex: 1 0 0;
     justify-content: center;
+    flex-wrap: wrap;
     background-color: #7FFFD4;
 }
 
 .grid {
-    width: var(--grid-width);
+    flex: 0 0 var(--grid-width);
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: flex-start;
@@ -89,9 +91,18 @@ main {
     aspect-ratio: 1 / 1;
 }
 
+.cell:hover {
+    cursor: crosshair;
+}
+
 .active {
     background-color: darkcyan;
     color: white;
+}
+
+.result {
+    flex: 0 0 100%;
+    text-align: center;
 }
 
 footer {
