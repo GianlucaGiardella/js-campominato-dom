@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --container-width: 1200px;
+    --grid-width: 600px;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #448A73;
+}
+
+.container {
+    height: 100vh;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+main,
+footer {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+header, 
+footer {
+    background-color: white;
+}
+
+header {
+    height: 80px;
+    justify-content: space-between;
+}
+
+h1 {
+    flex: 1 0 0;
+    font-size: 3rem;
+}
+
+.difficulty_box {
+    margin-inline-end: 1rem;
+}
+
+label,
+#mode,
+button,
+footer {
+    font-size: 1.5rem;
+}
+
+#mode {
+    border: none;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+button {
+    padding: 0.5rem;
+}
+
+main {
+    flex: 1 0 0;
+    justify-content: center;
+    background-color: #7FFFD4;
+}
+
+.grid {
+    width: var(--grid-width);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.cell {
+    flex: 0 0 calc(100% / var(--sideSquare));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    aspect-ratio: 1 / 1;
+}
+
+.active {
+    background-color: darkcyan;
+    color: white;
+}
+
+footer {
+    height: 60px;
+}
