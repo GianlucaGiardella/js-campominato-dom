@@ -2,14 +2,18 @@
 const easy = 100;
 const medium = 81;
 const hard = 49;
+const bombsNum = 16;
 const grid = document.querySelector(".grid");
 
 // functions
 function play() {
     const mode = document.querySelector("#mode").value.toLowerCase();
-    const cellNumber = difficulty(mode);
+    const cellNum = difficulty(mode);
+    const bombsArr = [];
     grid.innerHTML = "";
-    generate(cellNumber, grid);
+    generate(cellNum, grid);
+    bombGenerator(bombsNum, 1, cellNum, bombsArr)
+    console.log(bombsArr);
 }
 
 function difficulty(diff) {
@@ -31,5 +35,15 @@ function generate(cells, grid) {
             this.classList.toggle('active');
             console.log(`Hai premuto la cella ${this.innerHTML}`);
         });
+    }
+}
+
+function bombGenerator(range, min, max, arr) {
+    let random;
+    for (let i = 1; i <= range; i++) {
+        do {
+            random = Math.floor(Math.random() * (max - min + 1)) + min;
+        } while (arr.includes(random));
+        arr.push(random);
     }
 }
