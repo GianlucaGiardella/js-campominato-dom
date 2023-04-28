@@ -84,6 +84,7 @@ function activation() {
         showAll(true);
         result.innerHTML = `Hai vinto! Punteggio: ${score}`;
         main.appendChild(result);
+        score = 0;
     } else {
         score++;
         this.classList.add('active');
@@ -91,6 +92,7 @@ function activation() {
             showAll(false);
             result.innerHTML = `Hai vinto! Punteggio: ${score}`;
             main.appendChild(result);
+            score = 0;
         }
     }
 }
